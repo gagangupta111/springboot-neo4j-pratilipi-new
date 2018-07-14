@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,6 +58,21 @@ public class ControlllerNeo4j {
     @RequestMapping(value = "/updatePercentage", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public User updatePercentage(@RequestBody EdgePercentage edgePercentage){
         return service.createPercentage(edgePercentage);
+    }
+
+    @RequestMapping(value = "/save", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public EdgePercentage savePercentage(@RequestBody EdgePercentage edgePercentage){
+        return service.saveEdgePercentage(edgePercentage);
+    }
+
+    @RequestMapping(value = "/findEdgePercentage", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Optional<EdgePercentage> findEdgePercentage(@RequestBody EdgePercentage edgePercentage){
+        return service.findEdgePercentage(edgePercentage);
+    }
+
+    @RequestMapping(value = "/graph/{limit}", method = RequestMethod.GET)
+    public Collection<EdgePercentage> graph(@PathVariable("limit") Integer limit){
+        return service.graph(limit);
     }
 
 }

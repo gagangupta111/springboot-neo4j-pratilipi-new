@@ -75,11 +75,17 @@ public class StoryService {
         return user;
     }
 
-    private Map<String, Object> map(String key1, Object value1, String key2, Object value2) {
-        Map<String, Object> result = new HashMap<String, Object>(2);
-        result.put(key1, value1);
-        result.put(key2, value2);
-        return result;
+    @Transactional
+    public EdgePercentage saveEdgePercentage(EdgePercentage edgePercentage){
+
+        User user = edgePercentage.getUser();
+        user = userRepository.findById(user.getUser_id()).get();
+        Story story = edgePercentage.getStory();
+        story = storyRepository.findById(story.getStory_id()).get();
+
+        EdgePercentage e = new EdgePercentage(edgePercentage.getReadPercentage(), user, story);
+        return edgePercentageRepository.save(e);
+
     }
 
     @Transactional(readOnly = true)
@@ -95,8 +101,21 @@ public class StoryService {
     }
 
     @Transactional(readOnly = true)
-    public Collection<Story>  graph(int limit) {
-        Collection<Story> result = storyRepository.graph(limit);
+    public Optional<EdgePercentage>  findEdgePercentage(EdgePercentage edgePercentage) {
+
+        User user = edgePercentage.getUser();
+        user = userRepository.findById(user.getUser_id()).get();
+        Story story = edgePercentage.getStory();
+        story = storyRepository.findById(story.getStory_id()).get();
+
+        Optional<EdgePercentage> result = storyRepository.findEdgePercentage(story, user);
+        return result;
+    }
+
+    @Transactional(readOnly = true)
+    public Collection<EdgePercentage>  graph(Integer limit) {
+
+        Collection<EdgePercentage> result = storyRepository.graph(limit);
         return result;
     }
 
