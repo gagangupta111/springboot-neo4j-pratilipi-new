@@ -9,10 +9,9 @@
 		"46e41c38-29d6-a0ad-4156-532de80125ae",
 		"bc4affd5-a9e6-c0c9-94a0-39d7c579fa28",
 		"ddbeb4c2-7cde-3ebf-0fa4-37e6cd82b909",
-		"791b985b-a945-dfc9-43fc-ac4a5362d399",
 		"71036b8c-979b-f137-6f64-3f9d5a941489",
-		"09520ec0-fac2-054c-91aa-1d8333d7c884",
-		"285de54d-96a0-6d47-e444-d6dfbb415cb7"
+		"285de54d-96a0-6d47-e444-d6dfbb415cb7",
+		"5af9bdce-18be-3099-a7a0-12eb5995df5f"
 	],
 	"folders": [],
 	"folders_order": [],
@@ -20,35 +19,6 @@
 	"owner": "418362",
 	"public": false,
 	"requests": [
-		{
-			"id": "09520ec0-fac2-054c-91aa-1d8333d7c884",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:7890/general/findEdgePercentage",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1531592159637,
-			"name": "http://localhost:7890/general/users",
-			"description": "",
-			"collectionId": "1f7f8802-983b-8b9f-8958-540bfdeba395",
-			"responses": [],
-			"rawModeData": "{\n\t\"user\": {\n\t\t\"user_id\": 60\n\t},\n\t\"story\":{\n\t\t\"story_id\": 20\n\t},\n    \"readPercentage\": \"45\"\n}"
-		},
 		{
 			"id": "285de54d-96a0-6d47-e444-d6dfbb415cb7",
 			"headers": "",
@@ -74,7 +44,7 @@
 			"id": "46e41c38-29d6-a0ad-4156-532de80125ae",
 			"headers": "",
 			"headerData": [],
-			"url": "http://localhost:7890/general/user/21",
+			"url": "http://localhost:7890/general/user/1",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -85,8 +55,29 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1531567581427,
+			"time": 1531639364213,
 			"name": "http://localhost:7890/general/user/1",
+			"description": "",
+			"collectionId": "1f7f8802-983b-8b9f-8958-540bfdeba395",
+			"responses": []
+		},
+		{
+			"id": "5af9bdce-18be-3099-a7a0-12eb5995df5f",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:7890/general/deleteAll",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1531635332443,
+			"name": "http://localhost:7890/general/deleteall",
 			"description": "",
 			"collectionId": "1f7f8802-983b-8b9f-8958-540bfdeba395",
 			"responses": []
@@ -134,47 +125,18 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1531592698572,
+			"time": 1531643589156,
 			"name": "http://localhost:7890/general/save",
 			"description": "",
 			"collectionId": "1f7f8802-983b-8b9f-8958-540bfdeba395",
 			"responses": [],
-			"rawModeData": "{\n\t\"user\": {\n\t\t\"user_id\": 60\n\t},\n\t\"story\":{\n\t\t\"story_id\": 20\n\t},\n    \"readPercentage\": \"67\"\n}"
-		},
-		{
-			"id": "791b985b-a945-dfc9-43fc-ac4a5362d399",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://localhost:7890/general/updatePercentage",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1531585217043,
-			"name": "http://localhost:7890/general/updatePercentage",
-			"description": "",
-			"collectionId": "1f7f8802-983b-8b9f-8958-540bfdeba395",
-			"responses": [],
-			"rawModeData": "{\n\t\"user\": {\n\t\t\"user_id\": 41\n\t},\n\t\"story\":{\n\t\t\"story_id\": 0\n\t},\n    \"readPercentage\": \"86\"\n}"
+			"rawModeData": "{\n\t\"user\": {\n\t\t\"name\": \"User4\"\n\t},\n\t\"story\":{\n\t\t\"name\": \"Story3\"\n\t},\n    \"readPercentage\": \"81\"\n}"
 		},
 		{
 			"id": "ab39f4da-1802-aefd-17da-5d7312c12b53",
 			"headers": "",
 			"headerData": [],
-			"url": "http://localhost:7890/general/story/20",
+			"url": "http://localhost:7890/general/story/24",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -185,7 +147,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1531567571886,
+			"time": 1531639359882,
 			"name": "http://localhost:7890/general/story/1",
 			"description": "",
 			"collectionId": "1f7f8802-983b-8b9f-8958-540bfdeba395",
@@ -213,7 +175,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1531584842826,
+			"time": 1531639282814,
 			"name": "http://localhost:7890/general/story",
 			"description": "",
 			"collectionId": "1f7f8802-983b-8b9f-8958-540bfdeba395",
@@ -235,7 +197,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1531592833872,
+			"time": 1531635611133,
 			"name": "http://localhost:7890/Gods/users",
 			"description": "",
 			"collectionId": "1f7f8802-983b-8b9f-8958-540bfdeba395",
@@ -263,12 +225,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1531584861793,
-			"name": "http://localhost:7890/general/story",
+			"time": 1531641729420,
+			"name": "http://localhost:7890/general/user",
 			"description": "",
 			"collectionId": "1f7f8802-983b-8b9f-8958-540bfdeba395",
 			"responses": [],
-			"rawModeData": "{\n    \"name\": \"User3\"\n}"
+			"rawModeData": "{\n    \"name\": \"User4\"\n}"
 		}
 	]
 }

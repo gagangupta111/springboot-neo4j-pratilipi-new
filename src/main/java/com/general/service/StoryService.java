@@ -3,7 +3,6 @@ package com.general.service;
 import com.general.nodes.EdgePercentage;
 import com.general.nodes.Story;
 import com.general.nodes.User;
-import com.general.repositories.EdgePercentageRepository;
 import com.general.repositories.StoryRepository;
 import com.general.repositories.UserRepository;
 import org.slf4j.Logger;
@@ -19,12 +18,10 @@ public class StoryService {
 
     private final StoryRepository storyRepository;
     private final UserRepository userRepository;
-    private final EdgePercentageRepository edgePercentageRepository;
 
-    public StoryService(StoryRepository storyRepository, UserRepository userRepository, EdgePercentageRepository edgePercentageRepository) {
+    public StoryService(StoryRepository storyRepository, UserRepository userRepository) {
         this.storyRepository = storyRepository;
         this.userRepository = userRepository;
-        this.edgePercentageRepository = edgePercentageRepository;
     }
 
     @Transactional(readOnly = true)
@@ -58,33 +55,9 @@ public class StoryService {
     }
 
     @Transactional
-    public User createPercentage(EdgePercentage edgePercentage){
-        User user = edgePercentage.getUser();
-        user = userRepository.findById(user.getUser_id()).get();
-        Story story = edgePercentage.getStory();
-        story = storyRepository.findById(story.getStory_id()).get();
+    public void saveEdgePercentage(EdgePercentage edgePercentage){
 
-        boolean isFound = user.updatePercentage(story, edgePercentage.getReadPercentage());
-        if (!isFound){
-            EdgePercentage e = new EdgePercentage(edgePercentage.getReadPercentage(), user, story);
-            e = edgePercentageRepository.save(e);
-            user.getReadings().add(e);
-            user.getStories().add(story);
-        }
-        user = userRepository.save(user);
-        return user;
-    }
-
-    @Transactional
-    public EdgePercentage saveEdgePercentage(EdgePercentage edgePercentage){
-
-        User user = edgePercentage.getUser();
-        user = userRepository.findById(user.getUser_id()).get();
-        Story story = edgePercentage.getStory();
-        story = storyRepository.findById(story.getStory_id()).get();
-
-        EdgePercentage e = new EdgePercentage(edgePercentage.getReadPercentage(), user, story);
-        return edgePercentageRepository.save(e);
+        storyRepository.updateReadRelation(edgePercentage.getStory().getName(), edgePercentage.getUser().getName(), edgePercentage.getReadPercentage());
 
     }
 
@@ -117,6 +90,13 @@ public class StoryService {
 
         Collection<EdgePercentage> result = storyRepository.graph(limit);
         return result;
+    }
+
+    @Transactional
+    public void deleteAll() {
+
+        storyRepository.deleteAll();
+        userRepository.deleteAll();
     }
 
 }

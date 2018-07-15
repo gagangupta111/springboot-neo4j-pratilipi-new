@@ -7,6 +7,8 @@ import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
+
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -24,7 +26,7 @@ public class Story {
 
     @JsonIgnoreProperties("readings")
     @Relationship(type = "READ", direction = Relationship.INCOMING)
-    private Set<EdgePercentage> readings;
+    private Set<EdgePercentage> readings  = new HashSet<>();
 
     public Story() {
     }
@@ -56,6 +58,14 @@ public class Story {
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
+    }
+
+    public Set<EdgePercentage> getReadings() {
+        return readings;
+    }
+
+    public void setReadings(Set<EdgePercentage> readings) {
+        this.readings = readings;
     }
 
     @Override
