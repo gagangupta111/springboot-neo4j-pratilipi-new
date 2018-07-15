@@ -3,6 +3,7 @@ package com.general.service;
 import com.general.nodes.EdgePercentage;
 import com.general.nodes.Story;
 import com.general.nodes.User;
+import com.general.repositories.EdgePercentageRepository;
 import com.general.repositories.StoryRepository;
 import com.general.repositories.UserRepository;
 import org.slf4j.Logger;
@@ -18,10 +19,13 @@ public class StoryService {
 
     private final StoryRepository storyRepository;
     private final UserRepository userRepository;
+    private final EdgePercentageRepository edgePercentageRepository;
 
-    public StoryService(StoryRepository storyRepository, UserRepository userRepository) {
+    public StoryService(StoryRepository storyRepository, UserRepository userRepository,
+                        EdgePercentageRepository edgePercentageRepository) {
         this.storyRepository = storyRepository;
         this.userRepository = userRepository;
+        this.edgePercentageRepository = edgePercentageRepository;
     }
 
     @Transactional(readOnly = true)
@@ -32,6 +36,11 @@ public class StoryService {
     @Transactional(readOnly = true)
     public Iterable<Story> getAllStories(){
         return storyRepository.findAll();
+    }
+
+    @Transactional(readOnly = true)
+    public Iterable<EdgePercentage> getAllReads(){
+        return edgePercentageRepository.findAll();
     }
 
     @Transactional(readOnly = true)
@@ -55,9 +64,9 @@ public class StoryService {
     }
 
     @Transactional
-    public void saveEdgePercentage(EdgePercentage edgePercentage){
+    public Optional<EdgePercentage> saveEdgePercentage(EdgePercentage edgePercentage){
 
-        storyRepository.updateReadRelation(edgePercentage.getStory().getName(), edgePercentage.getUser().getName(), edgePercentage.getReadPercentage());
+        return storyRepository.updateReadRelation(edgePercentage.getStory().getName(), edgePercentage.getUser().getName(), edgePercentage.getReadPercentage());
 
     }
 

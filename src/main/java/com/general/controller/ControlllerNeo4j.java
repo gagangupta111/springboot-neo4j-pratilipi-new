@@ -29,6 +29,11 @@ public class ControlllerNeo4j {
         return service.getAllStories();
     }
 
+    @RequestMapping(value = "/reads", method = RequestMethod.GET)
+    public Iterable<EdgePercentage> getAllRelationships(){
+        return service.getAllReads();
+    }
+
     @RequestMapping(value = "/story/{id}", method = RequestMethod.GET)
     public Story getStoryById(@PathVariable("id") Long id){
         Optional<Story> story = service.getStoryById(id);
@@ -56,8 +61,8 @@ public class ControlllerNeo4j {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void savePercentage(@RequestBody EdgePercentage edgePercentage){
-         service.saveEdgePercentage(edgePercentage);
+    public Optional<EdgePercentage> savePercentage(@RequestBody EdgePercentage edgePercentage){
+         return service.saveEdgePercentage(edgePercentage);
     }
 
     @RequestMapping(value = "/findEdgePercentage", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -70,7 +75,7 @@ public class ControlllerNeo4j {
         return service.graph(limit);
     }
 
-    @RequestMapping(value = "/deleteAll", method = RequestMethod.GET)
+    @RequestMapping(value = "/deleteAll", method = RequestMethod.DELETE)
     public void deleteAll(){
          service.deleteAll();
     }

@@ -62,18 +62,6 @@ public class User {
         this.readings = readings;
     }
 
-    public boolean updatePercentage(Story story, int percentage){
-
-        for (EdgePercentage e : this.readings){
-            if (e.getStory().equals(story)) {
-                e.setReadPercentage(percentage);
-                this.stories.add(story);
-                return true;
-            }
-        }
-        return false;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

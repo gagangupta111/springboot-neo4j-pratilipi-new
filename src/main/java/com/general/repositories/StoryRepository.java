@@ -21,6 +21,6 @@ public interface StoryRepository extends Neo4jRepository<Story, Long> {
     @Query("MATCH (s:Story)<-[r:READ]-(u:User) RETURN s,r,u LIMIT {limit}")
     Collection<EdgePercentage> graph(@Param("limit") int limit);
 
-    @Query("MATCH (u:User {name:{userId}}), (s:Story {name:{sid}}) MERGE (u)-[r:READ{readPercentage:{readPercent}}]->(s)")
-    void updateReadRelation(@Param("sid")String sid,@Param("userId") String userId, @Param("readPercent") Integer readPercent);
+    @Query("MATCH (u:User {name:{userId}}), (s:Story {name:{sid}}) MERGE (u)-[r:READ{readPercentage:{readPercent}}]->(s) RETURN s, u, r")
+    Optional<EdgePercentage> updateReadRelation(@Param("sid")String sid,@Param("userId") String userId, @Param("readPercent") Integer readPercent);
 }

@@ -1,5 +1,10 @@
 package com.general;
 
+import com.general.nodes.EdgePercentage;
+import com.general.nodes.Story;
+import com.general.nodes.User;
+import com.google.gson.Gson;
+import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,6 +16,11 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
@@ -30,118 +40,87 @@ public class APITest {
     @Autowired
     private MockMvc mockMvc;
 
-    @Test
-    public void test_a_Create() throws Exception {
-
-        this.mockMvc.perform(post("/Gods/humans/create/human111").contentType(MediaType.APPLICATION_JSON))
-                .andDo(print())
-                .andExpect(content().string(containsString("human111")));
-
-        this.mockMvc.perform(post("/Gods/humans/create/human222").contentType(MediaType.APPLICATION_JSON))
-                .andDo(print())
-                .andExpect(content().string(containsString("human222")));
-    }
+    private static final int REPITITIONS = 10;
 
     @Test
-    public void test_b_Get() throws Exception {
+    public void test_a_DeleteAllExisting() throws Exception {
 
-        this.mockMvc.perform(get("/Gods/humans"))
-                .andDo(print())
-                .andExpect(content().string(containsString("human111")));
-    }
-
-    @Test
-    public void test_c_Update() throws Exception {
-
-        this.mockMvc.perform(post("/Gods/humans/update").contentType(MediaType.APPLICATION_JSON)
-                .content("{\n" +
-                        "        \"humanID\": 1,\n" +
-                        "        \"humanName\": \"update\",\n" +
-                        "        \"gods\": [\n" +
-                        "            {\n" +
-                        "                \"godID\": 1,\n" +
-                        "                \"godName\": \"update\"\n" +
-                        "            }\n" +
-                        "        ]\n" +
-                        "    }"))
-                .andDo(print())
-                .andExpect(content().string(containsString("update")));
-
-    }
-
-    @Test
-    public void test_d_Delete() throws Exception {
-
-        this.mockMvc.perform(delete("/Gods/humans/2"))
+        this.mockMvc.perform(delete("/general/deleteAll"))
                 .andDo(print())
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void test_e_Get() throws Exception {
+    public void test_b_CreateUsers() throws Exception {
 
-        this.mockMvc.perform(get("/Gods/humans/1"))
-                .andDo(print())
-                .andExpect(content().string(containsString("update")));
-    }
-
-
-
-
-
-
-    @Test
-    public void test_f_Create() throws Exception {
-
-        this.mockMvc.perform(post("/Gods/create/god1").contentType(MediaType.APPLICATION_JSON))
-                .andDo(print())
-                .andExpect(content().string(containsString("god1")));
-
-        this.mockMvc.perform(post("/Gods/create/god2").contentType(MediaType.APPLICATION_JSON))
-                .andDo(print())
-                .andExpect(content().string(containsString("god2")));
+        for (int i = 0; i < REPITITIONS; i++ ){
+            this.mockMvc.perform(post("/general/user").contentType(MediaType.APPLICATION_JSON)
+                    .content("{\n" +
+                            "    \"name\": \"User" + i + "\"\n" +
+                            "}"))
+                    .andExpect(content().string(containsString("User" + i )));
+        }
     }
 
     @Test
-    public void test_g_Get() throws Exception {
+    public void test_c_CreateStories() throws Exception {
 
-        this.mockMvc.perform(get("/Gods"))
-                .andDo(print())
-                .andExpect(content().string(containsString("god1")));
+        for (int i = 0; i < REPITITIONS; i++ ){
+            this.mockMvc.perform(post("/general/story").contentType(MediaType.APPLICATION_JSON)
+                    .content("{\n" +
+                            "    \"name\": \"Story" + i +"\",\n" +
+                            "    \"isbn\": \"978-4-16-148410-0\"\n" +
+                            "}"))
+                    .andExpect(content().string(containsString("Story" + i )));
+        }
     }
 
     @Test
-    public void test_h_Update() throws Exception {
+    public void test_d_Create_Relationships() throws Exception {
 
-        this.mockMvc.perform(post("/Gods/update").contentType(MediaType.APPLICATION_JSON)
-                .content("{\n" +
-                        "        \"godID\": 1,\n" +
-                        "        \"godName\": \"update\",\n" +
-                        "        \"humans\": [\n" +
-                        "            {\n" +
-                        "                \"humanID\": 1,\n" +
-                        "                \"humanName\": \"update\"\n" +
-                        "            }\n" +
-                        "        ]\n" +
-                        "    }"))
-                .andDo(print())
-                .andExpect(content().string(containsString("update")));
+        for (int i = 0; i < REPITITIONS; i++ ){
+            for (int j = 0; j < REPITITIONS; j++ ) {
+                this.mockMvc.perform(post("/general/save").contentType(MediaType.APPLICATION_JSON)
+                        .content("{\n" +
+                                "\t\"user\": {\n" +
+                                "\t\t\"name\": \"User" + i + "\"\n" +
+                                "\t},\n" +
+                                "\t\"story\":{\n" +
+                                "\t\t\"name\": \"Story" + j + "\"\n" +
+                                "\t},\n" +
+                                "    \"readPercentage\": \"81\"\n" +
+                                "}"))
+                        .andExpect(content().string(containsString("User" + i)))
+                        .andExpect(content().string(containsString("Story" + j)));
+            }
+        }
     }
 
     @Test
-    public void test_i_Delete() throws Exception {
+    public void test_e_Check_Size() throws Exception {
 
-        this.mockMvc.perform(delete("/Gods/2"))
-                .andDo(print())
-                .andExpect(status().isOk());
+        Gson gson = new Gson();
+        Set<User> userSet =
+                gson.fromJson(this.mockMvc.perform(get("/general/users")).andReturn().getResponse().getContentAsString(),
+                        HashSet.class);
+        Assert.assertEquals(userSet.size(), REPITITIONS);
+
+        Set<Story> storySet =
+                gson.fromJson(this.mockMvc.perform(get("/general/stories")).andReturn().getResponse().getContentAsString(),
+                        HashSet.class);
+        Assert.assertEquals(storySet.size(), REPITITIONS);
+
     }
 
     @Test
-    public void test_j_Get() throws Exception {
+    public void test_f_Check_Size_Reads() throws Exception {
 
-        this.mockMvc.perform(get("/Gods/1"))
-                .andDo(print())
-                .andExpect(content().string(containsString("update")));
+        Gson gson = new Gson();
+        List<EdgePercentage> readsSet =
+                gson.fromJson(this.mockMvc.perform(get("/general/reads")).andReturn().getResponse().getContentAsString(),
+                        ArrayList.class);
+        Assert.assertEquals(readsSet.size(), (REPITITIONS*REPITITIONS));
+
     }
 
 }
