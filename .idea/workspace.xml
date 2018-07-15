@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="94d0a5f4-2d82-43b0-827e-1ed4bc01b35d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/general/repositories/EdgePercentageRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/general/controller/ControlllerNeo4j.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/general/controller/ControlllerNeo4j.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/general/nodes/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/general/nodes/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/general/repositories/StoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/general/repositories/StoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/general/service/StoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/general/service/StoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/general/APITest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/general/APITest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/general/controller/ControlllerNeo4j.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/general/controller/ControlllerNeo4j.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/general/nodes/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/general/nodes/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/general/repositories/StoryRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/general/repositories/StoryRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/general/service/StoryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/general/service/StoryService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/general/APITest.class" beforeDir="false" />
-    </list>
+    <list default="true" id="94d0a5f4-2d82-43b0-827e-1ed4bc01b35d" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
