@@ -9,6 +9,8 @@ import java.util.Collection;
 
 public interface UserRepository extends Neo4jRepository<User, Long> {
 
-    User findByName(String name);
+    User findByName(@Param("name") String name);
+
+    Collection<User> findByNameLike(@Param("name") String name);
 
 }

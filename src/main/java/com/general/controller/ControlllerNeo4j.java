@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/general")
@@ -60,14 +61,14 @@ public class ControlllerNeo4j {
         return service.createUser(user);
     }
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Optional<EdgePercentage> savePercentage(@RequestBody EdgePercentage edgePercentage){
-         return service.saveEdgePercentage(edgePercentage);
+    @RequestMapping(value = "/updateRead", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Optional<EdgePercentage> updateReadRelation(@RequestBody EdgePercentage edgePercentage){
+         return service.findAndUpdateReadRelation(edgePercentage);
     }
 
-    @RequestMapping(value = "/findEdgePercentage", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Optional<EdgePercentage> findEdgePercentage(@RequestBody EdgePercentage edgePercentage){
-        return service.findEdgePercentage(edgePercentage);
+    @RequestMapping(value = "/findRead", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Optional<EdgePercentage> findReadRelation(@RequestBody EdgePercentage edgePercentage){
+        return service.findReadRelation(edgePercentage);
     }
 
     @RequestMapping(value = "/graph/{limit}", method = RequestMethod.GET)
@@ -79,5 +80,50 @@ public class ControlllerNeo4j {
     public void deleteAll(){
          service.deleteAll();
     }
+
+
+
+    // More Creative Getters
+
+    @RequestMapping(value = "/findUserWithAllStories/{name}", method = RequestMethod.GET)
+    Set<Story> findUserWithAllStories(@PathVariable("name") String name){
+        return service.findUserWithAllStories(name);
+    }
+
+    @RequestMapping(value = "/findUserWithAllReads/{name}", method = RequestMethod.GET)
+    Optional<User> findUserWithAllReads(@PathVariable("name") String name){
+        return service.findUserWithAllReads(name);
+    }
+
+    @RequestMapping(value = "/findAllUsersForStory/{name}", method = RequestMethod.GET)
+    Set<User> findAllUsersForStory(@PathVariable("name") String name){
+        return service.findAllUsersForStory(name);
+    }
+
+    @RequestMapping(value = "/findStoryWithAllReads/{name}", method = RequestMethod.GET)
+    Optional<Story> findStoryWithAllReads(@PathVariable("name") String name){
+        return service.findStoryWithAllReads(name);
+    }
+
+    @RequestMapping(value = "/findNotReadStoriesForUser/{name}", method = RequestMethod.GET)
+    Set<Story> findNotReadStoriesForUser(@PathVariable("name") String name){
+        return service.findNotReadStoriesForUser(name);
+    }
+
+    @RequestMapping(value = "/findMoreReadStoriesForUser/{name}/{percent}", method = RequestMethod.GET)
+    Set<Story> findStoriesForUserWithReadHigherThanPercent(@PathVariable("name") String name, @PathVariable("percent") Integer percent){
+        return service.findStoriesForUserWithReadHigherThanPercent(name, percent);
+    }
+
+    @RequestMapping(value = "/findLessReadStoriesForUser/{name}/{percent}", method = RequestMethod.GET)
+    Set<Story> findStoriesForUserWithReadLowerThanPercent(@PathVariable("name") String name, @PathVariable("percent") Integer percent){
+        return service.findStoriesForUserWithReadLowerThanPercent(name, percent);
+    }
+
+    @RequestMapping(value = "/findUsersWithOutStory", method = RequestMethod.GET)
+    Set<User> findUsersWithOutStory(){
+        return service.findUsersWithOutStory();
+    }
+
 
 }

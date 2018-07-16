@@ -28,6 +28,8 @@ public class Story {
     @Relationship(type = "READ", direction = Relationship.INCOMING)
     private Set<EdgePercentage> readings  = new HashSet<>();
 
+    private Set<User> users = new HashSet<>();
+
     public Story() {
     }
 
@@ -66,6 +68,14 @@ public class Story {
 
     public void setReadings(Set<EdgePercentage> readings) {
         this.readings = readings;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 
     @Override

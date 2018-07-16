@@ -8,6 +8,7 @@ import com.general.repositories.StoryRepository;
 import com.general.repositories.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.*;
@@ -63,11 +64,34 @@ public class StoryService {
         return storyRepository.save(story);
     }
 
+    @Transactional(readOnly = true)
+    public Optional<EdgePercentage>  findReadRelation(EdgePercentage edgePercentage) {
+
+        return storyRepository.findReadRelation(edgePercentage.getStory().getName(), edgePercentage.getUser().getName());
+    }
+
     @Transactional
-    public Optional<EdgePercentage> saveEdgePercentage(EdgePercentage edgePercentage){
+    public Optional<EdgePercentage> mergeEdgePercentage(EdgePercentage edgePercentage){
+
+        return storyRepository.mergeReadRelation(edgePercentage.getStory().getName(), edgePercentage.getUser().getName(), edgePercentage.getReadPercentage());
+
+    }
+
+    @Transactional
+    public Optional<EdgePercentage> updateEdgePercentage(EdgePercentage edgePercentage){
 
         return storyRepository.updateReadRelation(edgePercentage.getStory().getName(), edgePercentage.getUser().getName(), edgePercentage.getReadPercentage());
 
+    }
+
+    public Optional<EdgePercentage> findAndUpdateReadRelation(EdgePercentage edgePercentage){
+
+        if (findReadRelation(edgePercentage).isPresent()){
+            updateEdgePercentage(edgePercentage);
+            return findReadRelation(edgePercentage);
+        }else {
+            return mergeEdgePercentage(edgePercentage);
+        }
     }
 
     @Transactional(readOnly = true)
@@ -79,18 +103,6 @@ public class StoryService {
     @Transactional(readOnly = true)
     public Collection<Story> findByNameLike(String name) {
         Collection<Story> result = storyRepository.findByNameLike(name);
-        return result;
-    }
-
-    @Transactional(readOnly = true)
-    public Optional<EdgePercentage>  findEdgePercentage(EdgePercentage edgePercentage) {
-
-        User user = edgePercentage.getUser();
-        user = userRepository.findById(user.getUser_id()).get();
-        Story story = edgePercentage.getStory();
-        story = storyRepository.findById(story.getStory_id()).get();
-
-        Optional<EdgePercentage> result = storyRepository.findEdgePercentage(story, user);
         return result;
     }
 
@@ -107,5 +119,40 @@ public class StoryService {
         storyRepository.deleteAll();
         userRepository.deleteAll();
     }
+
+    // More Getters
+
+    public Set<Story> findUserWithAllStories(String userId){
+        return storyRepository.findUserWithAllStories(userId);
+    }
+
+    public Optional<User> findUserWithAllReads(String userId){
+        return storyRepository.findUserWithAllReads(userId);
+    }
+
+    public Set<User> findAllUsersForStory(String sid){
+        return storyRepository.findAllUsersForStory(sid);
+    }
+
+    public Optional<Story> findStoryWithAllReads(String sid){
+        return storyRepository.findStoryWithAllReads(sid);
+    }
+
+    public Set<Story> findNotReadStoriesForUser(String userId){
+        return storyRepository.findNotReadStoriesForUser(userId);
+    }
+
+    public Set<Story> findStoriesForUserWithReadHigherThanPercent(String userId, Integer readPercent){
+        return storyRepository.findStoriesForUserWithReadHigherThanPercent(userId, readPercent);
+    }
+
+    public Set<Story> findStoriesForUserWithReadLowerThanPercent(String userId, Integer readPercent){
+        return storyRepository.findStoriesForUserWithReadLowerThanPercent(userId, readPercent);
+    }
+
+    public Set<User> findUsersWithOutStory(){
+        return storyRepository.findUsersWithOutStory();
+    }
+
 
 }

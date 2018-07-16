@@ -6,6 +6,7 @@ import com.general.nodes.User;
 import com.google.gson.Gson;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
@@ -80,7 +81,7 @@ public class APITest {
 
         for (int i = 0; i < REPITITIONS; i++ ){
             for (int j = 0; j < REPITITIONS; j++ ) {
-                this.mockMvc.perform(post("/general/save").contentType(MediaType.APPLICATION_JSON)
+                this.mockMvc.perform(post("/general/updateRead").contentType(MediaType.APPLICATION_JSON)
                         .content("{\n" +
                                 "\t\"user\": {\n" +
                                 "\t\t\"name\": \"User" + i + "\"\n" +
