@@ -89,7 +89,7 @@ public class APITest {
                                 "\t\"story\":{\n" +
                                 "\t\t\"name\": \"Story" + j + "\"\n" +
                                 "\t},\n" +
-                                "    \"readPercentage\": \"81\"\n" +
+                                "    \"readPercentage\": \"" + i*j + j + "\"\n" +
                                 "}"))
                         .andExpect(content().string(containsString("User" + i)))
                         .andExpect(content().string(containsString("Story" + j)));

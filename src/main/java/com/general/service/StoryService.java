@@ -65,28 +65,28 @@ public class StoryService {
     }
 
     @Transactional(readOnly = true)
-    public Optional<EdgePercentage>  findReadRelation(EdgePercentage edgePercentage) {
+    public List<EdgePercentage>  findReadRelation(EdgePercentage edgePercentage) {
 
         return storyRepository.findReadRelation(edgePercentage.getStory().getName(), edgePercentage.getUser().getName());
     }
 
     @Transactional
-    public Optional<EdgePercentage> mergeEdgePercentage(EdgePercentage edgePercentage){
+    public List<EdgePercentage> mergeEdgePercentage(EdgePercentage edgePercentage){
 
         return storyRepository.mergeReadRelation(edgePercentage.getStory().getName(), edgePercentage.getUser().getName(), edgePercentage.getReadPercentage());
 
     }
 
     @Transactional
-    public Optional<EdgePercentage> updateEdgePercentage(EdgePercentage edgePercentage){
+    public List<EdgePercentage> updateEdgePercentage(EdgePercentage edgePercentage){
 
         return storyRepository.updateReadRelation(edgePercentage.getStory().getName(), edgePercentage.getUser().getName(), edgePercentage.getReadPercentage());
 
     }
 
-    public Optional<EdgePercentage> findAndUpdateReadRelation(EdgePercentage edgePercentage){
+    public List<EdgePercentage> findAndUpdateReadRelation(EdgePercentage edgePercentage){
 
-        if (findReadRelation(edgePercentage).isPresent()){
+        if (!findReadRelation(edgePercentage).isEmpty()){
             updateEdgePercentage(edgePercentage);
             return findReadRelation(edgePercentage);
         }else {

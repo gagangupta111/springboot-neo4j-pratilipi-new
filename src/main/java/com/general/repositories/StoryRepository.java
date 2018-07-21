@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -22,13 +23,13 @@ public interface StoryRepository extends Neo4jRepository<Story, Long> {
     Collection<EdgePercentage> graph(@Param("limit") int limit);
 
     @Query("MATCH (u:User {name:{userId}}), (s:Story {name:{sid}}), (u)-[r:READ]->(s) SET r.readPercentage = {readPercent} RETURN s, u, r")
-    Optional<EdgePercentage> updateReadRelation(@Param("sid")String sid,@Param("userId") String userId, @Param("readPercent") Integer readPercent);
+    List<EdgePercentage> updateReadRelation(@Param("sid")String sid, @Param("userId") String userId, @Param("readPercent") Integer readPercent);
 
     @Query("MATCH (u:User {name:{userId}}), (s:Story {name:{sid}}) MERGE (u)-[r:READ{readPercentage:{readPercent}}]->(s) RETURN s, u, r")
-    Optional<EdgePercentage> mergeReadRelation(@Param("sid")String sid,@Param("userId") String userId, @Param("readPercent") Integer readPercent);
+    List<EdgePercentage> mergeReadRelation(@Param("sid")String sid,@Param("userId") String userId, @Param("readPercent") Integer readPercent);
 
     @Query("MATCH (u:User {name:{userId}}), (s:Story {name:{sid}}), (u)-[r:READ]->(s) RETURN s, u, r")
-    Optional<EdgePercentage> findReadRelation(@Param("sid")String sid,@Param("userId") String userId);
+    List<EdgePercentage> findReadRelation(@Param("sid")String sid,@Param("userId") String userId);
 
 
 

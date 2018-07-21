@@ -62,12 +62,13 @@ public class ControlllerNeo4j {
     }
 
     @RequestMapping(value = "/updateRead", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Optional<EdgePercentage> updateReadRelation(@RequestBody EdgePercentage edgePercentage){
-         return service.findAndUpdateReadRelation(edgePercentage);
+    public List<EdgePercentage> updateReadRelation(@RequestBody EdgePercentage edgePercentage){
+        List<EdgePercentage> percentage = service.findAndUpdateReadRelation(edgePercentage);
+        return percentage;
     }
 
     @RequestMapping(value = "/findRead", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Optional<EdgePercentage> findReadRelation(@RequestBody EdgePercentage edgePercentage){
+    public List<EdgePercentage> findReadRelation(@RequestBody EdgePercentage edgePercentage){
         return service.findReadRelation(edgePercentage);
     }
 
@@ -80,8 +81,6 @@ public class ControlllerNeo4j {
     public void deleteAll(){
          service.deleteAll();
     }
-
-
 
     // More Creative Getters
 
