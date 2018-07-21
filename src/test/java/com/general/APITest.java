@@ -81,7 +81,7 @@ public class APITest {
 
         for (int i = 0; i < REPITITIONS; i++ ){
             for (int j = 0; j < REPITITIONS; j++ ) {
-                this.mockMvc.perform(post("/general/updateRead").contentType(MediaType.APPLICATION_JSON)
+                this.mockMvc.perform(post("/general/mergeRead").contentType(MediaType.APPLICATION_JSON)
                         .content("{\n" +
                                 "\t\"user\": {\n" +
                                 "\t\t\"name\": \"User" + i + "\"\n" +

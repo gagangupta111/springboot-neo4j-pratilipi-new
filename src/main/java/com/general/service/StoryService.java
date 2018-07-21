@@ -1,5 +1,6 @@
 package com.general.service;
 
+import com.general.mergecontrol.thread.WorkerThread;
 import com.general.nodes.EdgePercentage;
 import com.general.nodes.Story;
 import com.general.nodes.User;
@@ -8,12 +9,20 @@ import com.general.repositories.StoryRepository;
 import com.general.repositories.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.repository.query.Param;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.PostConstruct;
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 @Service
+@PropertySource("classpath:application.properties")
 public class StoryService {
 
     private final static Logger LOG = LoggerFactory.getLogger(StoryService.class);
@@ -22,11 +31,21 @@ public class StoryService {
     private final UserRepository userRepository;
     private final EdgePercentageRepository edgePercentageRepository;
 
+    private ExecutorService executor;
+
+    @Value("${executor.threads.size}")
+    private int threads;
+
     public StoryService(StoryRepository storyRepository, UserRepository userRepository,
                         EdgePercentageRepository edgePercentageRepository) {
         this.storyRepository = storyRepository;
         this.userRepository = userRepository;
         this.edgePercentageRepository = edgePercentageRepository;
+    }
+
+    @PostConstruct
+    public void init() {
+        executor = Executors.newFixedThreadPool(threads);
     }
 
     @Transactional(readOnly = true)
@@ -70,14 +89,14 @@ public class StoryService {
         return storyRepository.findReadRelation(edgePercentage.getStory().getName(), edgePercentage.getUser().getName());
     }
 
-    @Transactional
+    @Transactional()
     public List<EdgePercentage> mergeEdgePercentage(EdgePercentage edgePercentage){
 
         return storyRepository.mergeReadRelation(edgePercentage.getStory().getName(), edgePercentage.getUser().getName(), edgePercentage.getReadPercentage());
 
     }
 
-    @Transactional
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public List<EdgePercentage> updateEdgePercentage(EdgePercentage edgePercentage){
 
         return storyRepository.updateReadRelation(edgePercentage.getStory().getName(), edgePercentage.getUser().getName(), edgePercentage.getReadPercentage());
@@ -88,10 +107,11 @@ public class StoryService {
 
         if (!findReadRelation(edgePercentage).isEmpty()){
             updateEdgePercentage(edgePercentage);
-            return findReadRelation(edgePercentage);
         }else {
-            return mergeEdgePercentage(edgePercentage);
+            executor.submit(new WorkerThread(edgePercentage));
         }
+        return findReadRelation(edgePercentage);
+
     }
 
     @Transactional(readOnly = true)
