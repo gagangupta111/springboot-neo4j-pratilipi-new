@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="93a7031d-69d0-4754-8492-6ce9fc112335" name="Default" comment="" />
+    <list default="true" id="93a7031d-69d0-4754-8492-6ce9fc112335" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/general/mergecontrol/thread/WorkerThread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/general/util/BeanUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/general/controller/ControlllerNeo4j.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/general/controller/ControlllerNeo4j.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/general/service/StoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/general/service/StoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/general/APITest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/general/APITest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/general/controller/ControlllerNeo4j.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/general/controller/ControlllerNeo4j.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/general/service/StoryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/general/service/StoryService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/general/APITest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/general/APITest.class" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,10 +27,26 @@
       <file leaf-file-name="StoryService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/general/service/StoryService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-144">
-              <caret line="67" column="33" selection-start-line="67" selection-start-column="33" selection-end-line="67" selection-end-column="33" />
+            <state relative-caret-position="56">
+              <caret line="106" lean-forward="true" selection-start-line="106" selection-end-line="106" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1696#1697#0" expanded="true" />
+                <element signature="e#1760#1761#0" expanded="true" />
+                <element signature="e#1838#1839#0" expanded="true" />
+                <element signature="e#1885#1886#0" expanded="true" />
+                <element signature="e#1966#1967#0" expanded="true" />
+                <element signature="e#2014#2015#0" expanded="true" />
+                <element signature="e#2102#2103#0" expanded="true" />
+                <element signature="e#2159#2160#0" expanded="true" />
+                <element signature="e#2244#2245#0" expanded="true" />
+                <element signature="e#2294#2295#0" expanded="true" />
+                <element signature="e#2381#2382#0" expanded="true" />
+                <element signature="e#2432#2433#0" expanded="true" />
+                <element signature="e#2491#2492#0" expanded="true" />
+                <element signature="e#2539#2540#0" expanded="true" />
+                <element signature="e#2602#2603#0" expanded="true" />
+                <element signature="e#2652#2653#0" expanded="true" />
                 <element signature="e#4237#4238#0" expanded="true" />
                 <element signature="e#4306#4307#0" expanded="true" />
                 <element signature="e#4370#4371#0" expanded="true" />
@@ -34,16 +62,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="APITest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="APITest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/general/APITest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="61">
@@ -52,16 +71,42 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ControlllerNeo4j.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="WorkerThread.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/general/mergecontrol/thread/WorkerThread.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#773#774#0" expanded="true" />
+                <element signature="e#825#826#0" expanded="true" />
+                <element signature="e#874#875#0" expanded="true" />
+                <element signature="e#911#912#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ControlllerNeo4j.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/general/controller/ControlllerNeo4j.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="65" selection-start-line="65" selection-end-line="65" />
+            <state relative-caret-position="134">
+              <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -81,6 +126,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/general/repositories/StoryRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/general/service/StoryService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/general/controller/ControlllerNeo4j.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/general/APITest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/general/util/BeanUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/general/mergecontrol/thread/WorkerThread.java" />
       </list>
     </option>
   </component>
@@ -329,9 +377,12 @@
     <history-entry file="APITest - 2018.07.21 at 22h 29m 39s.xml">
       <configuration name="APITest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="APITest - 2018.07.22 at 01h 43m 13s.xml">
+      <configuration name="APITest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="4" />
@@ -352,7 +403,7 @@
       <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
       <window_info id="UI Designer" order="1" />
       <window_info anchor="right" id="Theme Preview" order="2" />
-      <window_info active="true" anchor="bottom" id="Debug" order="7" visible="true" weight="0.33616298" />
+      <window_info active="true" anchor="bottom" id="Debug" order="7" visible="true" weight="0.45840406" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info id="Designer" order="0" />
@@ -387,20 +438,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/general/controller/ControlllerNeo4j.java</url>
-          <line>66</line>
-          <properties />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/general/controller/ControlllerNeo4j.java</url>
-          <line>65</line>
-          <properties />
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="3" />
     </breakpoint-manager>
   </component>
@@ -440,24 +477,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/general/util/BeanUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#354#355#0" expanded="true" />
-            <element signature="e#403#404#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/general/service/StoryService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
           <caret line="86" column="33" selection-start-line="86" selection-start-column="33" selection-end-line="86" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1696#1697#0" expanded="true" />
+            <element signature="e#1760#1761#0" expanded="true" />
+            <element signature="e#1838#1839#0" expanded="true" />
+            <element signature="e#1885#1886#0" expanded="true" />
+            <element signature="e#1966#1967#0" expanded="true" />
+            <element signature="e#2014#2015#0" expanded="true" />
+            <element signature="e#2102#2103#0" expanded="true" />
+            <element signature="e#2159#2160#0" expanded="true" />
+            <element signature="e#2244#2245#0" expanded="true" />
+            <element signature="e#2294#2295#0" expanded="true" />
+            <element signature="e#2381#2382#0" expanded="true" />
+            <element signature="e#2432#2433#0" expanded="true" />
+            <element signature="e#2491#2492#0" expanded="true" />
+            <element signature="e#2539#2540#0" expanded="true" />
+            <element signature="e#2602#2603#0" expanded="true" />
+            <element signature="e#2652#2653#0" expanded="true" />
             <element signature="e#4237#4238#0" expanded="true" />
             <element signature="e#4306#4307#0" expanded="true" />
             <element signature="e#4370#4371#0" expanded="true" />
@@ -472,13 +513,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/general/APITest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="61">
@@ -490,19 +524,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="65" selection-start-line="65" selection-end-line="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/general/mergecontrol/thread/WorkerThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#504#505#0" expanded="true" />
-            <element signature="e#556#557#0" expanded="true" />
-            <element signature="e#605#606#0" expanded="true" />
-            <element signature="e#642#643#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -528,12 +551,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/general/service/StoryService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/general/util/BeanUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-144">
-          <caret line="67" column="33" selection-start-line="67" selection-start-column="33" selection-end-line="67" selection-end-column="33" />
+        <state relative-caret-position="289">
+          <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#565#566#0" expanded="true" />
+            <element signature="e#614#615#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/general/service/StoryService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="106" lean-forward="true" selection-start-line="106" selection-end-line="106" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1696#1697#0" expanded="true" />
+            <element signature="e#1760#1761#0" expanded="true" />
+            <element signature="e#1838#1839#0" expanded="true" />
+            <element signature="e#1885#1886#0" expanded="true" />
+            <element signature="e#1966#1967#0" expanded="true" />
+            <element signature="e#2014#2015#0" expanded="true" />
+            <element signature="e#2102#2103#0" expanded="true" />
+            <element signature="e#2159#2160#0" expanded="true" />
+            <element signature="e#2244#2245#0" expanded="true" />
+            <element signature="e#2294#2295#0" expanded="true" />
+            <element signature="e#2381#2382#0" expanded="true" />
+            <element signature="e#2432#2433#0" expanded="true" />
+            <element signature="e#2491#2492#0" expanded="true" />
+            <element signature="e#2539#2540#0" expanded="true" />
+            <element signature="e#2602#2603#0" expanded="true" />
+            <element signature="e#2652#2653#0" expanded="true" />
             <element signature="e#4237#4238#0" expanded="true" />
             <element signature="e#4306#4307#0" expanded="true" />
             <element signature="e#4370#4371#0" expanded="true" />
@@ -555,10 +613,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/general/mergecontrol/thread/WorkerThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#773#774#0" expanded="true" />
+            <element signature="e#825#826#0" expanded="true" />
+            <element signature="e#874#875#0" expanded="true" />
+            <element signature="e#911#912#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/general/controller/ControlllerNeo4j.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="65" selection-start-line="65" selection-end-line="65" />
+        <state relative-caret-position="134">
+          <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

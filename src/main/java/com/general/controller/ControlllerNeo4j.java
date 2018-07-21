@@ -67,6 +67,12 @@ public class ControlllerNeo4j {
         return percentage;
     }
 
+    @RequestMapping(value = "/mergeRead", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public List<EdgePercentage> mergeReadRelation(@RequestBody EdgePercentage edgePercentage){
+        List<EdgePercentage> percentage = service.mergeEdgePercentage(edgePercentage);
+        return percentage;
+    }
+
     @RequestMapping(value = "/findRead", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public List<EdgePercentage> findReadRelation(@RequestBody EdgePercentage edgePercentage){
         return service.findReadRelation(edgePercentage);
